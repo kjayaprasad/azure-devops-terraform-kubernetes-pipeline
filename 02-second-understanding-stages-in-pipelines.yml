@@ -24,7 +24,7 @@ stages:
     - bash: echo $(environment)deployJob
 - stage: QAdeploy
   variables: 
-    environment: Dev
+    environment: QA
   dependsOn: Build
   jobs:
   - job: QAdeployJob
