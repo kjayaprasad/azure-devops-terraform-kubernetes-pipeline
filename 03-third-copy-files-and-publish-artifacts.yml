@@ -12,6 +12,7 @@ stages:
   #   - bash: echo Build Firstjob
   # - job: Secondjob
     steps: 
+
     - bash: echo Build SecondSjob
     - bash: echo $(Pipelinelevelvariable)
     - bash: echo $(Build.BuildNumber)
@@ -33,3 +34,8 @@ stages:
           **/*.yaml
           **/*.tf
         TargetFolder: '$(Build.ArtifactStaging)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
