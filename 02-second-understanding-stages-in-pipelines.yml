@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: build
+- stage: Build
   jobs:
   - job: Firstjob
     steps: 
@@ -14,17 +14,20 @@ stages:
     steps: 
     - bash: echo Build SecondSjob
 - stage: DevDeploy
+    dependsOn:Build
   jobs:
   - job: DevDeployJob
     steps: 
-    - bash: echo Build DevDeployJob
+    - bash: echo DevdeployJob
 - stage: QAdeploy
+    dependsOn:Build
   jobs:
   - job: QAdeployJob
     steps: 
-    - bash: echo Build QAdeployJob
+     - bash: echo QAdeployJob
 - stage: prodDeploy
+    dependsOn:Build
   jobs:
   - job: proDeployJob
     steps: 
-    - bash: echo Build proSDeployJob
+    - bash: echo proSDeployJob
