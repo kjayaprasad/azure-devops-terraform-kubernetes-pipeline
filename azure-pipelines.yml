@@ -16,7 +16,6 @@ stages:
      steps:
      - bash: echo "Do the build"
 
-stages:
  - stage: DevDeploy
    jobs:
    - deployment:  DevDeployJob
@@ -27,7 +26,6 @@ stages:
             steps:
                - script: echo deploy to Dev
 
-stages:
  - stage: QADeploy
    jobs:
    - deployment:  DevDeployJob
