@@ -1,6 +1,13 @@
 trigger:
 - main
 
+strategy:
+  matrix:
+    linux:
+      operatingSystem: 'ubuntu-latest'
+    mac:
+      operatingSystem: 'macos-latest'  
+
 pool:
   vmImage: ubuntu-latest
 
@@ -21,6 +28,15 @@ stages:
     - bash: echo $(System.DefaultWorkingDirectory)
     - bash: ls -R $(System.DefaultWorkingDirectory)
     - bash: echo $(Build.ArtifactStaging)
+
+steps:
+- script: echo Running on $(operatingSystem)
+  displayName: 'Run a one-line script'
+
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#   displayName: 'Run a multi-line script'
     
 # - stage: DevDeploy
 #   variables: 
